@@ -1,0 +1,17 @@
+### 通过请求模拟队列的生产和消费
+GET http://localhost:8080/send/routingPC.routingQQ/hello
+
+### 通过请求模拟错误的队列
+GET http://localhost:8080/sendWrongExchange
+
+### 通过请求模拟错误的路由
+GET http://localhost:8080/sendWrongRouting
+
+### 通过请求模拟队列消费端的手动确认消息
+GET http://localhost:8080/send/routingQQ/error
+
+### 通过请求模拟队列消费端的手动确认和限流，一个队列中正在处理的消息消费之后才会让下一个消息处于待处理状态
+GET http://localhost:8080/limiting
+
+### 附加的消息内容
+GET http://localhost:8080/additional

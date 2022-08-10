@@ -1,0 +1,28 @@
+server:
+  port: ${port:8080}
+
+logging:
+  level:
+    priv:
+      noby:
+        easycode: debug
+
+mybatis:
+  type-aliases-package: priv.noby.easycode.entity
+  mapper-locations: classpath:/mapper/*Dao.xml
+
+spring:
+  application:
+    name: easycode
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/note?serverTimezone=UTC
+    username: root
+    password: 123
+    druid:
+      max-active: 10
+      initial-size: 3
+      min-idle: 3
+      max-wait: 60000
+
+

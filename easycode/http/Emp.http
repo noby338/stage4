@@ -1,0 +1,12 @@
+###
+GET http://localhost:8080/emp/queryByPage/2
+Content-Type: application/json
+
+{
+  "did": 1
+}
+
+###
+GET http://localhost:8080/emp/1
+Content-Type: application/json
+

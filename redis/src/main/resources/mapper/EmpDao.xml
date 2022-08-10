@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.noby.redis.dao.EmpDao">
+
+    <resultMap type="priv.noby.redis.entity.Emp" id="EmpMap">
+        <result property="eid" column="eid" jdbcType="INTEGER"/>
+        <result property="ename" column="ename" jdbcType="VARCHAR"/>
+        <result property="did" column="did" jdbcType="INTEGER"/>
+        <result property="hiredate" column="hiredate" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="EmpMap">
+        select
+          eid, ename, did, hiredate
+        from emp
+        where eid = #{eid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="EmpMap">
+        select
+          eid, ename, did, hiredate
+        from emp
+        <where>
+            <if test="eid != null">
+                and eid = #{eid}
+            </if>
+            <if test="ename != null and ename != ''">
+                and ename = #{ename}
+            </if>
+            <if test="did != null">
+                and did = #{did}
+            </if>
+            <if test="hiredate != null and hiredate != ''">
+                and hiredate = #{hiredate}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from emp
+        <where>
+            <if test="eid != null">
+                and eid = #{eid}
+            </if>
+            <if test="ename != null and ename != ''">
+                and ename = #{ename}
+            </if>
+            <if test="did != null">
+                and did = #{did}
+            </if>
+            <if test="hiredate != null and hiredate != ''">
+                and hiredate = #{hiredate}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="eid" useGeneratedKeys="true">
+        insert into emp(ename, did, hiredate)
+        values (#{ename}, #{did}, #{hiredate})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="eid" useGeneratedKeys="true">
+        insert into emp(ename, did, hiredate)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.ename}, #{entity.did}, #{entity.hiredate})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="eid" useGeneratedKeys="true">
+        insert into emp(ename, did, hiredate)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.ename}, #{entity.did}, #{entity.hiredate})
+        </foreach>
+        on duplicate key update
+        ename = values(ename),
+        did = values(did),
+        hiredate = values(hiredate)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update emp
+        <set>
+            <if test="ename != null and ename != ''">
+                ename = #{ename},
+            </if>
+            <if test="did != null">
+                did = #{did},
+            </if>
+            <if test="hiredate != null and hiredate != ''">
+                hiredate = #{hiredate},
+            </if>
+        </set>
+        where eid = #{eid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from emp where eid = #{eid}
+    </delete>
+
+</mapper>
+

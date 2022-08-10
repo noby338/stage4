@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.noby.redis.dao.DepDao">
+
+    <resultMap type="priv.noby.redis.entity.Dep" id="DepMap">
+        <result property="did" column="did" jdbcType="INTEGER"/>
+        <result property="dname" column="dname" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="DepMap">
+        select
+          did, dname
+        from dep
+        where did = #{did}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="DepMap">
+        select
+          did, dname
+        from dep
+        <where>
+            <if test="did != null">
+                and did = #{did}
+            </if>
+            <if test="dname != null and dname != ''">
+                and dname = #{dname}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from dep
+        <where>
+            <if test="did != null">
+                and did = #{did}
+            </if>
+            <if test="dname != null and dname != ''">
+                and dname = #{dname}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="did" useGeneratedKeys="true">
+        insert into dep(dname)
+        values (#{dname})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="did" useGeneratedKeys="true">
+        insert into dep(dname)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.dname})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="did" useGeneratedKeys="true">
+        insert into dep(dname)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.dname})
+        </foreach>
+        on duplicate key update
+        dname = values(dname)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update dep
+        <set>
+            <if test="dname != null and dname != ''">
+                dname = #{dname},
+            </if>
+        </set>
+        where did = #{did}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from dep where did = #{did}
+    </delete>
+
+</mapper>
+
