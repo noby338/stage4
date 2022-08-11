@@ -1,3 +1,6 @@
+
+
+
 server:
   port: ${port:8080}
 
@@ -20,10 +23,14 @@ spring:
     username: root
     password: 123
     druid:
-      max-active: 10
-      initial-size: 3
-      min-idle: 3
-      max-wait: 60000
+      max-active: 1
+      initial-size: 1
+      min-idle: 1
+      max-wait: 50
+#      max-active: 50
+#      initial-size: 10
+#      min-idle: 10
+#      max-wait: 100000
   redis:
     host: 192.168.122.128
     port: 6379
@@ -33,7 +40,16 @@ spring:
       pool:
         max-idle: 10
         max-active: 50
-
+  rabbitmq:
+    host: 192.168.122.128
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual    #消费者开启手动消息确认
+        prefetch: 1                #限流
 
 
 

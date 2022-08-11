@@ -20,9 +20,9 @@ spring:
     username: root
     password: 123
     druid:
-      max-active: 10
-      initial-size: 3
-      min-idle: 3
-      max-wait: 60000
+      max-active: 50
+      initial-size: 10
+      min-idle: 10
+      max-wait: 100000
 
 

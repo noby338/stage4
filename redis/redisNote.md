@@ -1,15 +1,39 @@
-redis 2022/7/28
+redisNote 
 
-* java 中 redis 的使用
-  * 导入依赖 jedis
-  
-* Springboot 中 redis 的使用
-  * 导入依赖 spring-boot-starter-data-redis
-  * StringRedisTemplate 类
-    * 存储对象不方便
-  * RedisTemplate 类
-    * 存储对象时存储redis中的默认为二进制文件，可读性和跨平台性差
-      * 自定义 RedisTemplate 配置类，修改默认的序列化器
-    * key 为 object 存储操作不便(key 的数据类型应该都为 String)
-    * 
-    
+* jedis 通过 jedis 的基本使用(RedisAPITest.java)
+  * jedis 配置文件配置连接池
+* springboot 使用 redis(RedisSpringbootTests.java)
+  * stringRedisTemplate 的基本使用（使用配置文件配置）
+  * redisTemplate 的基本使用(使用配置类和配置文件配置)
+  * redisTemplate string 中的常用 API
+  * redisTemplate hash 中的常用 API
+  * redisTemplate list 中的常用 API
+  * redisTemplate set 中的常用 API
+  * redisTemplate zset 中的常用 API
+  * 业务中使用 redis（StudentServiceImpl）
+    * 自定义缓存操作
+    * 声明式缓存操作（使用 Springboot 的缓存机制）@cacahable
+      * 添加场景启动器依赖
+      * 启动类添加启用声明式注解 @EnableCaching
+      * 使用类添加相应注解
+        * 查询 @Cacheable(value = "student", key = "#id", condition = "#id>3")
+          * value 和 key 表示工作空间的命名
+          * condition 表示缓存的条件
+        * 添加和修改 @CachePut(value = "student",key = "#student.id")
+        * 删除 @CacheEvict(value = "student",key = "#id",beforeInvocation = false)
+          * beforeInvocation = false 表示删除缓存的动作执行是否在主业务之前
+    * redis 实现 session 的中间件（redis session 共享）（LoginController）
+      * 添加依赖 spring-session-data-redis
+* redis 存在的问题
+  * 缓存穿透：是指查询一个一定不存在的数据，由于缓存是不命中，将去查询数据库，但是数据库也无此记录，并且处于容错考虑，我们没有将这次查询的null写入缓存，这将导致这个不存在的数据每次请求都要到存储层去查询。
+  * 缓存雪崩：缓存雪崩是指在我们设置缓存时采用了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到DB，DB瞬时压力过重雪崩。
+  * 缓存击穿：不存在缓存的数据在被写入缓存前，被超高并发地访问，导致这个不存在缓存的数据每次请求都要到存储层去查询。
+* redis的线程安全(LockController)
+  * redis的多线程
+    * 在单服务器和集群环境下都不存在线程安全问题
+  * 自定义多线程
+    * 单服务器有问题 使用同步锁可以解决
+    * 集群环境有问题 使用分布式锁
+      * 分布式锁的使用
+        * 配置类(redissonClient)
+      

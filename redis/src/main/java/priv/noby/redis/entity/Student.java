@@ -6,19 +6,21 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-/**
- * @Description
- * @Author noby
- * @Date 2022/7/28 16:33
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+/**
+ * (Student)实体类
+ *
+ * @author makejava
+ * @since 2022-08-05 23:45:14
+ */
 public class Student implements Serializable {
-    Integer id;
-    String name;
-    Integer age;
-    Boolean gender;
+    private static final long serialVersionUID = 847074965399466270L;
+        private Integer id;
+        private String name;
+        private Integer age;
+        private Boolean gender;
 
     public Student(String name, Integer age, Boolean gender) {
         this.name = name;
@@ -26,3 +28,4 @@ public class Student implements Serializable {
         this.gender = gender;
     }
 }
+

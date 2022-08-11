@@ -1,0 +1,8 @@
+### 秒杀的准备
+GET http://localhost:8080/good/start
+
+### 开始秒杀无消息队列
+GET http://localhost:8080/good/second
+
+### 开始秒杀有消息队列
+GET http://localhost:8080/good/second2
