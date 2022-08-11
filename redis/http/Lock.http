@@ -1,0 +1,8 @@
+### 模拟缓存击穿
+GET http://localhost:8080/lock/breakdown
+
+### 自定义线程
+GET http://localhost:8080/lock/customizeThread
+
+### redis线程
+GET http://localhost:8080/lock/redisThread

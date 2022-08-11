@@ -1,0 +1,11 @@
+### 分布式环境使用redis的session登录(不使用redis的情况下集群中每个tomcat存储的是自己的Session信息)
+GET http://localhost:8080/login
+
+### 测试分布式环境的session登录是否成功
+GET http://localhost:8080/test
+
+### 分布式环境使用redis的session登录
+GET http://localhost:8081/login
+
+### 测试分布式环境的session登录是否成功
+GET http://localhost:8081/test
