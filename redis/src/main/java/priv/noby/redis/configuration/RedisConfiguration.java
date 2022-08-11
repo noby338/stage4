@@ -9,9 +9,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import java.net.UnknownHostException;
 
 /**
- * @Description
- * @Author noby
- * @Date 2022/7/28 17:26
+ * 自定义 RedisTemplate 的序列化方式的配置类
  */
 @Configuration
 public class RedisConfiguration {

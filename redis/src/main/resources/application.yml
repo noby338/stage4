@@ -1,14 +1,40 @@
-spring :
-  redis :
-    host: 192.168.32.128
+server:
+  port: ${port:8080}
+
+logging:
+  level:
+    priv:
+      noby:
+        redis: debug
+
+mybatis:
+  type-aliases-package: priv.noby.redis.entity
+  mapper-locations: classpath:/mapper/*Dao.xml
+
+spring:
+  application:
+    name: redis
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/note?serverTimezone=UTC
+    username: root
+    password: 123
+    druid:
+      max-active: 10
+      initial-size: 3
+      min-idle: 3
+      max-wait: 60000
+  redis:
+    host: 192.168.122.128
     port: 6379
     database: 0
     password: 123
-#    连接池
-    jedis:
+    jedis: #  连接池
       pool:
         max-idle: 10
         max-active: 50
+
+
 
 
 

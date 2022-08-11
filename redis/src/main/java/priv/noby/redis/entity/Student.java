@@ -15,7 +15,14 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Student implements Serializable {
+    Integer id;
     String name;
     Integer age;
     Boolean gender;
+
+    public Student(String name, Integer age, Boolean gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
 }
