@@ -51,7 +51,7 @@
 
 
 
-
+        <!--Springboot的测试类-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -63,6 +63,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--spring的内置分页-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>

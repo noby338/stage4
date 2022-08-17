@@ -15,3 +15,9 @@ GET http://localhost:8080/limiting
 
 ### 附加的消息内容
 GET http://localhost:8080/additional
+
+### 死信
+GET http://localhost:8080/orderDelay
+
+### 延迟插件
+GET http://localhost:8080/delayPlugin

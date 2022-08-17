@@ -1,0 +1,2 @@
+###
+GET http://localhost:8182/storage/decrease?productId=1&count=10

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.noby.provider.emp.dao.OrderDao">
+
+    <resultMap type="priv.noby.common.entity.Order" id="OrderMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="count" column="count" jdbcType="INTEGER"/>
+        <result property="money" column="money" jdbcType="NUMERIC"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="OrderMap">
+        select
+          id, user_id, product_id, count, money, status
+        from order
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="OrderMap">
+        select
+          id, user_id, product_id, count, money, status
+        from order
+        <where>
+            <if test="order.id != null">
+                and id = #{order.id}
+            </if>
+            <if test="order.userId != null">
+                and user_id = #{order.userId}
+            </if>
+            <if test="order.productId != null">
+                and product_id = #{order.productId}
+            </if>
+            <if test="order.count != null">
+                and count = #{order.count}
+            </if>
+            <if test="order.money != null">
+                and money = #{order.money}
+            </if>
+            <if test="order.status != null">
+                and status = #{order.status}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from order
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="productId != null">
+                and product_id = #{productId}
+            </if>
+            <if test="count != null">
+                and count = #{count}
+            </if>
+            <if test="money != null">
+                and money = #{money}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into `order`(user_id, product_id, count, money, status)
+        values (#{userId}, #{productId}, #{count}, #{money}, #{status})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update order
+        <set>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="productId != null">
+                product_id = #{productId},
+            </if>
+            <if test="count != null">
+                count = #{count},
+            </if>
+            <if test="money != null">
+                money = #{money},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from order where id = #{id}
+    </delete>
+
+</mapper>
+

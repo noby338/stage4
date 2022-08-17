@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 /**
  * 生产者接收请求的controller
  */
@@ -60,5 +62,35 @@ public class ProduceController {
                 }
         );
     }
+
+    //region 死信
+    @RequestMapping("/orderDelay")
+    public String orderDelay(){
+        for (int i=1;i<=5;i++) {
+            System.out.println("发送时间："+new Date());
+            rabbitTemplate.convertAndSend("exchangeOrderDelay", "routingOrderDelay", "order"+i);
+        }
+        return "orderDelay ok";
+    }
+    //endregion
+
+    //region 延迟队列
+    @RequestMapping("/delayPlugin")
+    public String delayPlugin(){
+        for (int i=1;i<=5;i++) {
+            System.out.println("发送时间："+new Date());
+            rabbitTemplate.convertAndSend("exchangeDelayPlugin", "routingDelayPlugin", "delayPlugin" + i,
+                    new MessagePostProcessor() {
+                @Override
+                public Message postProcessMessage(Message message) throws AmqpException {
+                    //设置消息属性：延迟
+                    message.getMessageProperties().setDelay(10000);
+                    return message;
+                }
+            });
+        }
+        return "delayPlugin ok";
+    }
+    //endregion
 
 }

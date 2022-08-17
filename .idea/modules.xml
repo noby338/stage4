@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/account-server/account-server.iml" filepath="$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/account-server/account-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud/common-entity/common-entity.iml" filepath="$PROJECT_DIR$/springCloud/common-entity/common-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud/consumer-emp/consumer-emp.iml" filepath="$PROJECT_DIR$/springCloud/consumer-emp/consumer-emp.iml" />
       <module fileurl="file://$PROJECT_DIR$/easycode/easycode.iml" filepath="$PROJECT_DIR$/easycode/easycode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud/eureka/eureka.iml" filepath="$PROJECT_DIR$/springCloud/eureka/eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/order-server/order-server.iml" filepath="$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/order-server/order-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud/provider-emp/provider-emp.iml" filepath="$PROJECT_DIR$/springCloud/provider-emp/provider-emp.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud/springCloud.iml" filepath="$PROJECT_DIR$/springCloud/springCloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/springcloud-eureka-feign-mybatis-seata.iml" filepath="$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/springcloud-eureka-feign-mybatis-seata.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/stage4.iml" filepath="$PROJECT_DIR$/.idea/stage4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/storage-server/storage-server.iml" filepath="$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/storage-server/storage-server.iml" />
     </modules>
   </component>
 </project>
