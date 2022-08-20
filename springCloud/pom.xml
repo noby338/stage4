@@ -13,6 +13,10 @@
         <module>provider-emp</module>
         <module>consumer-emp</module>
         <module>eureka</module>
+        <module>config</module>
+        <module>config-test</module>
+        <module>gateway</module>
+        <module>auth</module>
     </modules>
 
 

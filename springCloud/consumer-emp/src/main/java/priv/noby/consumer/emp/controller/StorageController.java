@@ -1,6 +1,5 @@
 package priv.noby.consumer.emp.controller;
 
-import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,7 +25,7 @@ public class StorageController {
     /**
      */
     @PutMapping("/buy/{productId}/{count}")
-    @GlobalTransactional(name = "springCloud",rollbackFor = Exception.class)
+//    @GlobalTransactional(name = "springCloud",rollbackFor = Exception.class)
     public ResponseEntity<Storage> Buy(@PathVariable Long productId,@PathVariable Integer count) {
         Storage storage = storageService.queryByStorageId(productId);
         storage.setResidue(storage.getResidue() - count);

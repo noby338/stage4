@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.noby.consumer.emp.dao.StorageDao">
+
+    <resultMap type="priv.noby.common.entity.Storage" id="StorageMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="total" column="total" jdbcType="INTEGER"/>
+        <result property="used" column="used" jdbcType="INTEGER"/>
+        <result property="residue" column="residue" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <!--查询单个-->
+    <select id="queryByProductId" resultMap="StorageMap">
+        select
+          id, product_id, total, used, residue
+        from storage
+        where product_id = #{productId}
+    </select>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="StorageMap">
+        select
+          id, product_id, total, used, residue
+        from storage
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="StorageMap">
+        select
+          id, product_id, total, used, residue
+        from storage
+        <where>
+            <if test="storage.id != null">
+                and id = #{storage.id}
+            </if>
+            <if test="storage.productId != null">
+                and product_id = #{storage.productId}
+            </if>
+            <if test="storage.total != null">
+                and total = #{storage.total}
+            </if>
+            <if test="storage.used != null">
+                and used = #{storage.used}
+            </if>
+            <if test="storage.residue != null">
+                and residue = #{storage.residue}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from storage
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="productId != null">
+                and product_id = #{productId}
+            </if>
+            <if test="total != null">
+                and total = #{total}
+            </if>
+            <if test="used != null">
+                and used = #{used}
+            </if>
+            <if test="residue != null">
+                and residue = #{residue}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into storage(product_id, total, used, residue)
+        values (#{productId}, #{total}, #{used}, #{residue})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update storage
+        <set>
+            <if test="productId != null">
+                product_id = #{productId},
+            </if>
+            <if test="total != null">
+                total = #{total},
+            </if>
+            <if test="used != null">
+                used = #{used},
+            </if>
+            <if test="residue != null">
+                residue = #{residue},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from storage where id = #{id}
+    </delete>
+
+</mapper>
+

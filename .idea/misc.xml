@@ -6,9 +6,18 @@
         <option value="$PROJECT_DIR$/redis/pom.xml" />
         <option value="$PROJECT_DIR$/easycode/pom.xml" />
         <option value="$PROJECT_DIR$/rabbitmq/pom.xml" />
-        <option value="$PROJECT_DIR$/springCloud/pom.xml" />
         <option value="$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/pom.xml" />
+        <option value="$PROJECT_DIR$/springCloud/pom.xml" />
+        <option value="$PROJECT_DIR$/springCloud2/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/springCloud/untitled/pom.xml" />
+        <option value="$PROJECT_DIR$/springCloud2/config-test/pom.xml" />
+        <option value="$PROJECT_DIR$/springCloud2/config/pom.xml" />
+        <option value="$PROJECT_DIR$/springCloud2/eureka/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="PWA">

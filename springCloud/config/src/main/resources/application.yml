@@ -1,0 +1,16 @@
+server:
+  port: 4041
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6061/eureka
+
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/noby3388/spring-cloud-config.git    #配置中心连接git远程仓库，获取远程仓库中的配置文件

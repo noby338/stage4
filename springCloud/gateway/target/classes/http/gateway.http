@@ -1,0 +1,26 @@
+### 通过getway调用8081emp
+GET http://localhost:3031/emp/1
+
+### 通过getway调用8081emp cookie验证
+GET http://localhost:3031/emp/1
+Cookie: c=chap
+
+### 通过getway调用8081emp 请求头验证
+GET http://localhost:3031/emp/1
+h1: 123
+
+### 通过getway调用8081emp 拦截器
+GET http://localhost:3031/emp/1?username=noby
+
+### 通过getway调用2021登录
+POST http://localhost:2021/auth/login
+Content-Type: application/json
+
+{
+  "name": "noby",
+  "password": "123"
+}
+
+### 通过getway调用8081emp，必须携带token验证
+GET http://localhost:3031/emp/1
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjYwOTk2MjQ0LCJpYXQiOjE2NjA5OTQ0NDQsInVzZXJuYW1lIjoibm9ieSJ9.kkDCzRx5OlEUfQj751PMgxqAYI6YP_2XGv4Qt0T7TcM

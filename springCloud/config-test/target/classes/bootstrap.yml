@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    config:
+      label: master
+      name: configTest
+      profile: dev
+      uri: http://localhost:4041
+#      https://gitee.com/noby3388/spring-cloud-config.git
+# 监控插件暴露刷新点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"    #可以使用*,也可以使用refresh,发送刷新请求的时候只支持refresh名字
