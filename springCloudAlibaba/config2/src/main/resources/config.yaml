@@ -1,0 +1,5 @@
+# 云上的所有环境共享配置文件
+
+shared: sharedinfo
+# 配置的优先级 具体开发环境云配置>所有环境共享云配置>application>bootstrap
+info: config

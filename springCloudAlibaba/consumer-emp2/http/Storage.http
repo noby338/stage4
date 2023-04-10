@@ -1,0 +1,3 @@
+### 测试购买并修改库存，并调用生产者controller添加订单
+PUT http://localhost:7071/storage/buy/1/2
+

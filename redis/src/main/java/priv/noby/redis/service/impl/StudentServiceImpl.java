@@ -24,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
     private StudentDao studentDao;
 
     /**
-     * 自定义的缓存操作
+     * 编程式缓存的操作
      */
     @Override
     public Student queryById(Integer id) {
@@ -46,10 +46,11 @@ public class StudentServiceImpl implements StudentService {
     /**
      * Springboot redis 声明式的缓存操作 查询
      * value redis中的组
-     * key redis中的组
+     * key redis中的键
      * condition 添加缓存的条件
      */
-    @Cacheable(value = "student", key = "#id", condition = "#id>3")
+//    @Cacheable(value = "student", key = "#id", condition = "#id>3")
+    @Cacheable(value = "student", key = "#id")
     @Override
     public Student queryById2(Integer id) {
         Student student = studentDao.queryById(id);

@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    priv:
+      noby:
+        redis3: debug
+
+spring:
+  application:
+    name: redis3
+  redis:
+    host: 192.168.122.128
+    port: 6379
+    database: 0
+    password: 123
+    jedis: #  连接池
+      pool:
+        max-idle: 10
+        max-active: 50
+
+
+
+
+

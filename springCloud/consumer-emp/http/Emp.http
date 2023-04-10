@@ -1,0 +1,30 @@
+### 通过RestTemplate调用其他模块的controller查询，手动输入IP和端口
+GET http://localhost:7071/emp/2
+
+### 通过RestTemplate调用其他模块的controller添加，手动输入IP和端口
+POST http://localhost:7071/emp
+Content-Type: application/json
+
+{
+  "ename": "noby",
+  "did": 2,
+  "hiredate": "2021-10-12"
+}
+
+### 通过RestTemplate调用其他模块的controller，eureka DiscoveryClient类寻找注册中心生产者的ip和端口
+GET http://localhost:7071/emp/queryByIdEurekaDiscoveryClient/3
+
+### 通过RestTemplate调用其他模块的controller，eureka Ribbon寻找注册中心生产者的ip和端口
+GET http://localhost:7071/emp/queryByIdEurekaRibbon/3
+
+
+
+
+### 通过OpenFeign调用其他模块的controller
+GET http://localhost:7071/emp/queryByIdOpenFeign/4
+
+### 通过OpenFeign调用其他模块的controller，测试OpenFeign的默认超时时间
+GET http://localhost:7071/emp/timeoutTest/1000
+
+### 通过OpenFeign调用其他模块的controller，测试OpenFeign的自定义超时时间
+GET http://localhost:7071/emp/timeoutTest/4000

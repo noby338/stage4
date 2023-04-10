@@ -1,8 +1,5 @@
-
-
-
 server:
-  port: ${port:8080}
+  port: 8080
 
 logging:
   level:
@@ -19,18 +16,18 @@ spring:
     name: redis
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/note?serverTimezone=UTC
+    url: jdbc:mysql://localhost/stage4?serverTimezone=UTC
     username: root
     password: 123
     druid:
-      max-active: 1
-      initial-size: 1
-      min-idle: 1
-      max-wait: 50
-#      max-active: 50
-#      initial-size: 10
-#      min-idle: 10
-#      max-wait: 100000
+#      max-active: 1
+#      initial-size: 1
+#      min-idle: 1
+#      max-wait: 50
+      max-active: 50
+      initial-size: 10
+      min-idle: 10
+      max-wait: 100000
   redis:
     host: 192.168.122.128
     port: 6379
@@ -50,6 +47,10 @@ spring:
       simple:
         acknowledge-mode: manual    #消费者开启手动消息确认
         prefetch: 1                #限流
+#  cache:
+#    type: simple
+#    cache-names:
+#      - student
 
 
 

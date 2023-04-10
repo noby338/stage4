@@ -1,0 +1,60 @@
+server:
+  port: ${port:7071}
+
+logging:
+  level:
+    priv.noby.consumer.emp: debug
+spring:
+  application:
+    name: consumer-emp
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/stage4?serverTimezone=UTC
+    username: root
+    password: 123
+  cloud:
+    sentinel:
+      transport:
+        port: 8719                      #对外的通讯端口
+        dashboard: localhost:8080       #sentinel管控台地址，就是访问的页面
+    nacos:
+      server-addr: localhost:8848
+mybatis:
+  type-aliases-package: priv.noby.common.entity
+  mapper-locations: classpath:/mapper/*Dao.xml
+feign:
+  sentinel:
+    enabled: true     #启用sentinel降级熔断
+  client:
+    config:
+      default:      #配置不同微服务支持的超时时间，default就是默认所有的微服务使用相同的超时时间
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full    #OpenFeing日志，当spring的日志打开该日志才生效 NONE，BASIC，HEADERS，FULL
+seata:
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: ""
+      group: DEFAULT_GROUP
+      application: seata-server
+      username: nacos
+      password: nacos
+  tx-service-group: storage # 事务组名称
+  service:
+    vgroup-mapping: # 事务组与cluster的映射关系
+      storage: default
+  data-source-proxy-mode: AT
+#  config:
+#    type: nacos
+#    nacos:
+#      server-addr: 127.0.0.1:8848
+#      username: nacos
+#      password: nacos
+#      group: SEATA_GROUP
+#      data-id: client.properties
+
+
+
+

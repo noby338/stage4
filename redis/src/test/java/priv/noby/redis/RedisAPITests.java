@@ -1,10 +1,7 @@
 package priv.noby.redis;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -15,11 +12,6 @@ import java.util.Map;
  */
 @SpringBootTest
 class RedisAPITests {
-    @Autowired
-    StringRedisTemplate stringRedisTemplate;
-    @Autowired
-    RedisTemplate<String, Object> redisTemplate;
-
     /**
      * jedis 的基本使用
      */
@@ -54,7 +46,7 @@ class RedisAPITests {
         jedisPoolConfig.setMaxIdle(10);//设置最大空闲
         //连接池对象
         //final GenericObjectPooLConfig pooLConfig,连接池配置
-        ////final String host,int port,主机端口
+        //final String host,int port,主机端口
         //int timeout, final String password 等待时间密码
         JedisPool jedisPooL = new JedisPool(jedisPoolConfig, "192.168.122.128", 6379, 2000, "123");
         Jedis jedis = jedisPooL.getResource();

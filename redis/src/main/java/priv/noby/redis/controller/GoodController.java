@@ -31,7 +31,7 @@ public class GoodController {
     @RequestMapping("/second2")
     public String second2(){
         goodService.second2();
-        return "second ok";
+        return "second2 ok";
     }
 }
 

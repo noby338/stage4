@@ -1,8 +1,0 @@
-### 测试登录
-POST http://localhost:2021/auth/login
-Content-Type: application/json
-
-{
-  "name": "noby",
-  "password": "123"
-}

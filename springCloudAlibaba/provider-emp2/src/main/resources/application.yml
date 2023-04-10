@@ -1,0 +1,38 @@
+server:
+  port: ${port:8081}
+logging:
+  level:
+    priv.noby.provider.emp: debug
+spring:
+  application:
+    name: provider-emp
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/stage4?serverTimezone=UTC
+    username: root
+    password: 123
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+
+mybatis:
+  type-aliases-package: priv.noby.common.entity
+  mapper-locations: classpath:/mapper/*Dao.xml
+
+seata:
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: ""
+      group: DEFAULT_GROUP
+      application: seata-server
+      username: nacos
+      password: nacos
+  tx-service-group: storage # 事务组名称
+  service:
+    vgroup-mapping: # 事务组与cluster的映射关系
+      storage: default
+  data-source-proxy-mode: AT
+
+

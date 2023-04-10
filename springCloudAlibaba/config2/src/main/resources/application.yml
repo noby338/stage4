@@ -1,0 +1,10 @@
+server:
+  port: ${port:5051}
+spring:
+  application:
+    name: config
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+# 配置的优先级 具体开发环境云配置>所有环境共享云配置>application>bootstrap
+info: applicaton

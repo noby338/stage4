@@ -2,7 +2,6 @@ package priv.noby.redis.service.impl;
 
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -17,9 +16,9 @@ import javax.annotation.Resource;
  */
 @Service
 public class LockServiceImpl implements LockService {
-    @Autowired
+    @Resource
     RedisTemplate<String, Object> redisTemplate;
-    @Autowired
+    @Resource
     RedissonClient redissonClient;
     @Resource
     StudentDao studentDao;

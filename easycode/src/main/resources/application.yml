@@ -16,7 +16,7 @@ spring:
     name: easycode
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/note?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/stage4?serverTimezone=UTC
     username: root
     password: 123
     druid:

@@ -25,7 +25,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="common-entity (1)" />
+    <orderEntry type="module" module-name="common-entity" />
+    <orderEntry type="library" name="Maven: com.auth0:java-jwt:3.4.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.4" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.2.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:2.2.9.RELEASE" level="project" />
@@ -66,7 +69,6 @@
     <orderEntry type="library" name="Maven: com.sun.jersey.contribs:jersey-apache-client4:1.19.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
     <orderEntry type="library" name="Maven: commons-configuration:commons-configuration:1.10" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject:guice:4.1.0" level="project" />
@@ -74,7 +76,6 @@
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.11.4" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.jettison:jettison:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.eureka:eureka-core:1.10.14" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.woodstox:woodstox-core:6.2.1" level="project" />

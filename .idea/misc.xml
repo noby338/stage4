@@ -3,27 +3,27 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/redis/pom.xml" />
         <option value="$PROJECT_DIR$/easycode/pom.xml" />
         <option value="$PROJECT_DIR$/rabbitmq/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-eureka-feign-mybatis-seata/pom.xml" />
         <option value="$PROJECT_DIR$/springCloud/pom.xml" />
-        <option value="$PROJECT_DIR$/springCloud2/pom.xml" />
-      </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/springCloud/untitled/pom.xml" />
         <option value="$PROJECT_DIR$/springCloud2/config-test/pom.xml" />
-        <option value="$PROJECT_DIR$/springCloud2/config/pom.xml" />
-        <option value="$PROJECT_DIR$/springCloud2/eureka/pom.xml" />
-      </set>
+        <option value="$PROJECT_DIR$/redis/pom.xml" />
+        <option value="$PROJECT_DIR$/redis2/pom.xml" />
+        <option value="$PROJECT_DIR$/redis3/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq2/pom.xml" />
+        <option value="$PROJECT_DIR$/mq-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringAMQP/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringAMQP2/pom.xml" />
+        <option value="$PROJECT_DIR$/mq-advanced-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/springCloudAlibaba/pom.xml" />
+        <option value="$PROJECT_DIR$/seata-demo/pom.xml" />
+      </list>
     </option>
   </component>
   <component name="PWA">
     <option name="wasEnabledAtLeastOnce" value="true" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="jdk1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

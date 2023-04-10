@@ -14,12 +14,24 @@ class StudentServiceImplTest {
     @Autowired
     StudentService studentService;
 
+    /**
+     * 编程式缓存的使用
+     *
+     * 第一次查询将获取数据库中的数据
+     * 之后的查询将获取缓存中的数据
+     */
     @Test
     void queryById() {
         Student student = studentService.queryById(4);
         System.out.println("student = " + student);
     }
 
+    /**
+     * 声明式缓存的使用
+     *
+     * 第一次查询将获取数据库中的数据
+     * 之后的查询将获取缓存中的数据
+     */
     @Test
     void queryByI2() {
         Student student = studentService.queryById2(6);

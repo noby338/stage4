@@ -1,2 +1,0 @@
-### 获取来自Gitee的配置文件
-GET http://localhost:4041/master/configTest-dev.yml

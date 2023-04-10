@@ -23,7 +23,7 @@ class RedisSpringbootTests {
     RedisTemplate<String, Object> redisTemplate;
 
     /**
-     * stringRedisTemplate 配合 objectMapper 类序列化和发序列化的基本使用
+     * stringRedisTemplate 配合 objectMapper 类序列化和反序列化的基本使用
      */
     @Test
     void stringRedisTemplate() throws JsonProcessingException {
@@ -143,6 +143,7 @@ class RedisSpringbootTests {
         opsForList.rightPush("list", "1");
         //lrange 遍历后 list 还在
         System.out.println("opsForList.range(\"list\", 0, -1) = " + opsForList.range("list", 0, -1));
+        //opsForList.range("list", 0, -1) = [0, a, b, c, d, 1]
         Object str;
         //Pop 弹出后 list 删除
         while ((str = opsForList.leftPop("list")) != null) {

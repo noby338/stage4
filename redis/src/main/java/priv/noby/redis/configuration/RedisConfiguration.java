@@ -11,11 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
-/**
- * @Description
- * @Author noby
- * @Date 2022/7/28 17:26
- */
+
 @Configuration
 public class RedisConfiguration {
     /**
@@ -34,8 +30,6 @@ public class RedisConfiguration {
         template.setValueSerializer(RedisSerializer.json());
         template.setHashKeySerializer(RedisSerializer.string());
         template.setHashValueSerializer(RedisSerializer.json());
-        boolean b = true;
-        int a = 1;
         return template;
     }
 
@@ -45,7 +39,7 @@ public class RedisConfiguration {
     @Bean
     public RedisCacheConfiguration redisCacheConfiguration() {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
-        //修改默认的序列化器
+        //修改默认的序列化器，变双冒号为单冒号
         redisCacheConfiguration = redisCacheConfiguration.
                 serializeKeysWith(
                         RedisSerializationContext.SerializationPair.

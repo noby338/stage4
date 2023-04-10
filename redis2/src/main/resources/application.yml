@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    priv:
+      noby:
+        redis2: debug
+
+mybatis:
+  type-aliases-package: priv.noby.redis2.entity
+  mapper-locations: classpath:/mapper/*Dao.xml
+
+spring:
+  application:
+    name: redis2
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/stage4?serverTimezone=UTC
+    username: root
+    password: 123
+    druid:
+#      max-active: 1
+#      initial-size: 1
+#      min-idle: 1
+#      max-wait: 50
+      max-active: 50
+      initial-size: 10
+      min-idle: 10
+      max-wait: 100000
+  redis:
+    host: 192.168.122.128
+    port: 6379
+    database: 0
+    password: 123
+    jedis: #  连接池
+      pool:
+        max-idle: 10
+        max-active: 50
+
+
+
+
+

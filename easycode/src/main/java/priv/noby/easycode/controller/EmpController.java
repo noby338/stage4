@@ -31,9 +31,9 @@ public class EmpController {
      * @param page 页码
      * @return 查询结果
      */
-    @GetMapping("queryByPage/{page}")
-    public ResponseEntity<Page<Emp>> queryByPage(@RequestBody Emp emp, @PathVariable("page") int page) {
-        PageRequest pageRequest = PageRequest.of(page, 4);
+    @GetMapping("queryByPage/{page}/{size}")
+    public ResponseEntity<Page<Emp>> queryByPage(@RequestBody Emp emp, @PathVariable("page") int page, @PathVariable("size") int size) {
+        PageRequest pageRequest = PageRequest.of(page,size);
         return ResponseEntity.ok(this.empService.queryByPage(emp, pageRequest));
     }
 

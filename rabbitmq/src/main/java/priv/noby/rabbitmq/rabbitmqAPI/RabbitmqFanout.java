@@ -3,24 +3,21 @@ package priv.noby.rabbitmq.rabbitmqAPI;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.concurrent.TimeoutException;
 
 /**
+ * 3.Fanout(Publish/Subscribe一共有三种，3,4,5都属于Publish/Subscribe)
  * 使用 Rabbit 的原生 API 生产队列和消费队列
- * 有交换机，无路由，多个管道，多个消费者 publish/subscribe(发布/订阅模式) fanout
+ * 有交换机，无路由，多个队列，多个消费者 publish/subscribe(发布/订阅模式) fanout
+ * 该种模式交换机会将消息路由到所有的队列
  */
 public class RabbitmqFanout {
     public static void main(String[] args) throws IOException, TimeoutException {
-        consumer();
-        consumer2();
-        for (int i = 0; i < 4; i++) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            produce("info"+i);
-        }
+        //两个消费者轮流消费
+        consumer(1000);
+        consumer2(1000);
+        produce(6,10);
     }
 
     /**
@@ -29,7 +26,7 @@ public class RabbitmqFanout {
      * @throws IOException
      * @throws TimeoutException
      */
-    private static void produce(String info) throws IOException, TimeoutException {
+    private static void produce(int times ,long delay) throws IOException, TimeoutException {
         //创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("192.168.122.128");
@@ -39,12 +36,25 @@ public class RabbitmqFanout {
         connectionFactory.setVirtualHost("/");
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
-        //发送消息
-//        channel.basicPublish("", "queueNoby", null, info.getBytes());
-        //Fanout模式：交换机
-        //路由key:
-        channel.basicPublish("exchangeFanout","", null,info.getBytes());
-        System.out.println("生产者发送:"+info);
+        //简单模式发送消息
+//        channel.basicPublish("", "queue", null, info.getBytes());
+
+        for (int i = 1; i <= times; i++) {
+            String info = "info"+i;
+            //发送消息
+            //String exchange,    交换机，简单工作模式，使用的是默认交换机
+            //String routingKey, 路由就是队列的名字
+            //BasicProperties props, 消息的附件属性
+            //byte[] body             消息内容
+            channel.basicPublish("exchangeFanout", "", null, info.getBytes());
+            System.out.println(LocalTime.now()+" 生产者生产:"+info);
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
         //关闭资源
         channel.close();
         connection.close();
@@ -56,7 +66,7 @@ public class RabbitmqFanout {
      * @throws IOException
      * @throws TimeoutException
      */
-    private static void consumer() throws IOException, TimeoutException {
+    private static void consumer(long delay) throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("192.168.122.128");
         connectionFactory.setPort(5672);
@@ -80,7 +90,12 @@ public class RabbitmqFanout {
             public void handleDelivery(String consumerTag, Envelope envelope,
                                        AMQP.BasicProperties properties,
                                        byte[] body){
-                System.out.println("消费者Message监听:"+new String(body));
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(LocalTime.now()+" 消费者Message监听:"+new String(body));
             }
         });
     }
@@ -91,7 +106,7 @@ public class RabbitmqFanout {
      * @throws IOException
      * @throws TimeoutException
      */
-    private static void consumer2() throws IOException, TimeoutException {
+    private static void consumer2(long delay) throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("192.168.122.128");
         connectionFactory.setPort(5672);
@@ -111,7 +126,12 @@ public class RabbitmqFanout {
             public void handleDelivery(String consumerTag, Envelope envelope,
                                        AMQP.BasicProperties properties,
                                        byte[] body){
-                System.out.println("消费者Email监听:"+new String(body));
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(LocalTime.now()+" 消费者Email监听:"+new String(body));
             }
         });
     }

@@ -1,15 +1,17 @@
 <component name="libraryTable">
   <library name="Maven: priv.noby:common-entity:1.0-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/springCloud/common-entity/pom.xml!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/priv/noby/common-entity/1.0-SNAPSHOT/common-entity-1.0-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/springCloud2/common-entity/common-entity-1.0-SNAPSHOT-javadoc.jar!/" />
       <root url="jar://$PROJECT_DIR$/springCloud/common-entity/common-entity-1.0-SNAPSHOT-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/priv/noby/common-entity/1.0-SNAPSHOT/common-entity-1.0-SNAPSHOT-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/springCloud2/common-entity/common-entity-1.0-SNAPSHOT-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/springCloud/common-entity/common-entity-1.0-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/priv/noby/common-entity/1.0-SNAPSHOT/common-entity-1.0-SNAPSHOT-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -1,0 +1,20 @@
+### 登录并存入session，8080
+GET http://localhost:8080/user/login
+
+### 登录后获取session，8080
+GET http://localhost:8080/user/getSession
+
+### 登录并存入session，8081
+GET http://localhost:8081/user/login
+
+### 登录后获取session，8081
+GET http://localhost:8081/user/getSession
+
+### nginx登录并存入session(表示随机在8080和8081中存入session)
+GET http://192.168.122.128/user/login
+
+### nginx登录后获取session(表示随机在8080和8081都可获得session)
+GET http://192.168.122.128/user/getSession
+
+
+

@@ -9,7 +9,7 @@ spring:
     name: consumer-emp
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/note?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/stage4?serverTimezone=UTC
     username: root
     password: 123
   cloud:
@@ -30,7 +30,7 @@ feign:
     config:
       default:      #配置不同微服务支持的超时时间，default就是默认所有的微服务使用相同的超时时间
         connectTimeout: 5000
-        readTimeout: 5000
+        readTimeout: 2000
         loggerLevel: full    #OpenFeing日志，当spring的日志打开该日志才生效 NONE，BASIC，HEADERS，FULL
 
 

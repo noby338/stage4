@@ -1,0 +1,5 @@
+### 测试远程配置是否改变
+GET http://localhost:5051/info
+
+### 测试远程配置的多环境(test,dev)共享配置文件
+GET http://localhost:5051/shared
