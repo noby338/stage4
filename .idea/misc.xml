@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/mq-advanced-demo/pom.xml" />
         <option value="$PROJECT_DIR$/springCloudAlibaba/pom.xml" />
         <option value="$PROJECT_DIR$/seata-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/elasticsearch/pom.xml" />
       </list>
     </option>
   </component>

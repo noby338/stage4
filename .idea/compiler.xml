@@ -20,16 +20,13 @@
         <module name="redis" />
         <module name="redis2" />
         <module name="rabbitmq2" />
-        <module name="publisher2" />
-        <module name="consumer2" />
+        <module name="elasticsearch" />
         <module name="common-entity" />
         <module name="redis3" />
-        <module name="consumer" />
         <module name="provider-emp" />
         <module name="gateway2" />
         <module name="rabbitmq" />
         <module name="config-test" />
-        <module name="publisher" />
         <module name="config" />
         <module name="consumer-emp" />
         <module name="gateway" />
@@ -52,7 +49,8 @@
       <module name="consumer-emp (1)" target="1.8" />
       <module name="consumer-emp2" target="1.8" />
       <module name="consumer2" target="8" />
-      <module name="easycode" target="1.8" />
+      <module name="easycode" target="1.5" />
+      <module name="elasticsearch" target="1.5" />
       <module name="eureka" target="1.8" />
       <module name="eureka (1)" target="1.8" />
       <module name="eureka-server" target="1.8" />
@@ -65,11 +63,11 @@
       <module name="provider-emp2" target="1.8" />
       <module name="publisher" target="8" />
       <module name="publisher2" target="8" />
-      <module name="rabbitmq" target="1.8" />
-      <module name="rabbitmq2" target="1.8" />
-      <module name="redis" target="1.8" />
-      <module name="redis2" target="1.8" />
-      <module name="redis3" target="1.8" />
+      <module name="rabbitmq" target="1.5" />
+      <module name="rabbitmq2" target="1.5" />
+      <module name="redis" target="1.5" />
+      <module name="redis2" target="1.5" />
+      <module name="redis3" target="1.5" />
       <module name="redis4" target="1.8" />
       <module name="seata" target="1.8" />
       <module name="springAMQP" target="8" />
