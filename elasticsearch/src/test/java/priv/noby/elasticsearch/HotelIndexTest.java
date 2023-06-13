@@ -20,8 +20,7 @@ import static priv.noby.elasticsearch.constants.HotelIndexConstants.MAPPING_TEMP
 @SpringBootTest
 class HotelIndexTest {
 
-    private RestHighLevelClient client;
-
+    private RestHighLevelClient client;;
     @Test
     void testCreateIndex() throws IOException {
         // 1.准备Request      PUT /hotel
