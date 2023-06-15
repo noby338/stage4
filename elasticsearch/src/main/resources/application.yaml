@@ -2,13 +2,13 @@ server:
   port: 8089
 spring:
   datasource:
-    url: jdbc:mysql://mysql:3306/stage4?useSSL=false
+    url: jdbc:mysql://localhost:3306/stage4?useSSL=false
     username: root
     password: 123
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 logging:
   level:
-    cn.itcast: debug
+    priv.noby: debug
   pattern:
     dateformat: HH:mm:ss:SSS
 mybatis-plus:
