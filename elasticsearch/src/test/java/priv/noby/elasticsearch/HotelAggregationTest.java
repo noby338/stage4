@@ -29,7 +29,7 @@ class HotelAggregationTest {
     @Test
     void testAgg() throws IOException {
         // 1.准备请求
-        SearchRequest request = new SearchRequest("hotel");
+        SearchRequest request = new SearchRequest("hotel2");
         // 2.请求参数
         // 2.1.size
         request.source().size(0);
@@ -56,7 +56,7 @@ class HotelAggregationTest {
     @Test
     void testSuggest() throws IOException {
         // 1.准备请求
-        SearchRequest request = new SearchRequest("hotel");
+        SearchRequest request = new SearchRequest("hotel2");
         // 2.请求参数
         request.source().suggest(new SuggestBuilder()
                 .addSuggestion(
@@ -84,7 +84,7 @@ class HotelAggregationTest {
     @BeforeEach
     void setUp() {
         client = new RestHighLevelClient(RestClient.builder(
-                HttpHost.create("http://192.168.150.101:9200")
+                HttpHost.create("http://localhost:9200")
         ));
     }
 

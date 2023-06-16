@@ -3,6 +3,10 @@ package priv.noby.elasticsearch.pojo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+/**
+ * 用于存储到ES中的hotel的数据
+ */
 @Data
 @NoArgsConstructor
 public class HotelDoc {

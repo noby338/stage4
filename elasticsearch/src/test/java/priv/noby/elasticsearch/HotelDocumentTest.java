@@ -2,6 +2,7 @@ package priv.noby.elasticsearch;
 
 import priv.noby.elasticsearch.pojo.Hotel;
 import priv.noby.elasticsearch.pojo.HotelDoc;
+import priv.noby.elasticsearch.pojo.HotelDoc2;
 import priv.noby.elasticsearch.service.IHotelService;
 import com.alibaba.fastjson.JSON;
 import org.apache.http.HttpHost;
@@ -97,6 +98,31 @@ class HotelDocumentTest {
             String json = JSON.toJSONString(hotelDoc);
             // 2.3.添加请求
             request.add(new IndexRequest("hotel").id(hotel.getId().toString()).source(json, XContentType.JSON));
+        }
+
+        // 3.发送请求
+        client.bulk(request, RequestOptions.DEFAULT);
+    }
+
+    /**
+     * 添加hotel2的文档数据
+     * @throws IOException
+     */
+    @Test
+    void testBulkRequest2() throws IOException {
+        // 查询所有的酒店数据
+        List<Hotel> list = hotelService.list();
+
+        // 1.准备Request
+        BulkRequest request = new BulkRequest();
+        // 2.准备参数
+        for (Hotel hotel : list) {
+            // 2.1.转为HotelDoc
+            HotelDoc2 hotelDoc2 = new HotelDoc2(hotel);
+            // 2.2.转json
+            String json = JSON.toJSONString(hotelDoc2);
+            // 2.3.添加请求
+            request.add(new IndexRequest("hotel2").id(hotel.getId().toString()).source(json, XContentType.JSON));
         }
 
         // 3.发送请求
