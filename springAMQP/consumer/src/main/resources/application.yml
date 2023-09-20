@@ -3,11 +3,11 @@ logging:
     dateformat: MM-dd HH:mm:ss:SSS
 spring:
   rabbitmq:
-    host: 192.168.122.128 # rabbitMQ的ip地址
+    host: localhost # rabbitMQ的ip地址
     port: 5672 # 端口
     username: guest
     password: guest
     virtual-host: /
     listener:
-      simple:
-        prefetch: 1 # 消息的限流，消费者每次从队列获取一个消息处理
+      simple: # 这是一个消息监听容器，它负责接收消息并将它们分发给相应的消息处理器。
+        prefetch: 1 # 消息的限流，消费者每次从队列获取一个消息处理，如果没有这个参数，消费者会一次性从队列获取所有消息，这样会导致消息的堆积

@@ -14,10 +14,6 @@ import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
-import org.elasticsearch.search.aggregations.AggregationBuilders;
-import org.elasticsearch.search.aggregations.Aggregations;
-import org.elasticsearch.search.aggregations.bucket.terms.Terms;
-import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.elasticsearch.search.sort.SortOrder;
@@ -28,7 +24,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import priv.noby.elasticsearch.pojo.HotelDoc;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
@@ -41,12 +36,12 @@ class HotelSearchTest {
         // 1.准备request
         SearchRequest request = new SearchRequest("hotel");
         // 2.准备请求参数
-//        request.source().query(QueryBuilders.matchAllQuery());
+        request.source().query(QueryBuilders.matchAllQuery());
 //        request.source().query(QueryBuilders.matchQuery("all", "外滩如家"));
 //        request.source().query(QueryBuilders.multiMatchQuery("外滩如家", "name", "brand", "city"));
 //        request.source().query(QueryBuilders.termQuery("city", "上海"));
 //        request.source().query(QueryBuilders.rangeQuery("price").gte(100).lte(200));
-        request.source().query(QueryBuilders.geoDistanceQuery("location").point(31.21524, 121.420033).distance("5km"));
+//        request.source().query(QueryBuilders.geoDistanceQuery("location").point(31.21524, 121.420033).distance("5km"));
 
         // 3.发送请求，得到响应
         SearchResponse response = client.search(request, RequestOptions.DEFAULT);
@@ -145,7 +140,7 @@ class HotelSearchTest {
             Map<String, HighlightField> map = hit.getHighlightFields();
             // 2）根据字段名，获取高亮结果
             HighlightField highlightField = map.get("name");
-            // 3）获取高亮结果字符串数组中的第1个元素
+            // 3）获取高亮结果字符串数组中的第1个元
             String hName = highlightField.getFragments()[0].toString();
             // 4）把高亮结果放到HotelDoc中
             hotelDoc.setName(hName);
@@ -155,28 +150,6 @@ class HotelSearchTest {
 
     }
 
-    @Test
-    void testAggregation() throws IOException {
-        // 1.准备request
-        SearchRequest request = new SearchRequest("hotel");
-        // 2.准备请求参数
-        // 2.1.设置文档size
-        request.source().size(0);
-        // 2.2.聚合
-        request.source().aggregation(AggregationBuilders
-                .terms("brandAgg")
-                .field("brand")
-                .size(10));
-        // 3.发送请求，得到响应
-        SearchResponse response = client.search(request, RequestOptions.DEFAULT);
-        // 4.结果解析
-        Aggregations aggregations = response.getAggregations();
-        Terms terms = aggregations.get("brandAgg");
-        List<? extends Terms.Bucket> buckets = terms.getBuckets();
-        for (Terms.Bucket bucket : buckets) {
-            System.out.println(bucket.getKeyAsString() + ":" + bucket.getDocCount());
-        }
-    }
 
     private void handleResponse(SearchResponse response) {
         SearchHits searchHits = response.getHits();

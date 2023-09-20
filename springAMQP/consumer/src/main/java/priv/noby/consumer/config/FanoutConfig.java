@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * fanout的配置
+ * fanout交换机的配置
  * 定义队列
  * 定义交换机
  * 绑定队列到交换机
@@ -53,6 +53,5 @@ public class FanoutConfig {
                 .bind(fanoutQueue2)
                 .to(fanoutExchange);
     }
-
 
 }

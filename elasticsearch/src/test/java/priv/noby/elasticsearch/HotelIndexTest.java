@@ -2,9 +2,7 @@ package priv.noby.elasticsearch;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestClient;
-import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.*;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.xcontent.XContentType;
@@ -66,6 +64,14 @@ class HotelIndexTest {
 
     @BeforeEach
     void setUp() {
+
+
+        RestClient httpClient = RestClient.builder(
+                new HttpHost("localhost", 9200)
+        ).build();
+
+
+
         client = new RestHighLevelClient(RestClient.builder(
                 HttpHost.create("http://localhost:9200")
         ));

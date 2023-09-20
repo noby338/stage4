@@ -5,12 +5,15 @@ logging:
     priv.noby: debug
 spring:
   rabbitmq:
-    host: 192.168.122.128 # rabbitMQ的ip地址
+    host: localhost # rabbitMQ的ip地址
     port: 5672 # 端口
     username: guest
     password: guest
     virtual-host: /
-    publisher-confirm-type: correlated #开启publisher-confirm，这里支持两种类型：同步等待confirm结果，直到超时。异步回调，定义ConfirmCallback，MQ返回结果时会回调这个ConfirmCallback
-    publisher-returns: true #开启publish-return功能，定义ReturnCallback回调函数
+    # 开启publisher-confirm，判断是否到达交换机。这里支持两种类型：
+    # simple：同步等待confirm结果，直到超时
+    # correlated：异步回调，定义ConfirmCallback，MQ返回结果时会回调这个ConfirmCallback
+    publisher-confirm-type: correlated
+    publisher-returns: true # 开启publish-return功能，判断是否到达消息队列，同样是基于callback机制，不过是定义ReturnCallback。
     template:
-      mandatory: true #定义消息路由失败时的策略。true，则调用ReturnCallback；false：则直接丢弃消息
+      mandatory: true # 定义消息路由失败时的策略。true，则调用ReturnCallback；false：则直接丢弃消息

@@ -9,6 +9,7 @@
     <file url="file://$PROJECT_DIR$/SpringAMQP2/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/easycode/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/easycode/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/elasticsearch/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq-advanced-demo/consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq-advanced-demo/consumer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq-advanced-demo/publisher/src/main/java" charset="UTF-8" />
@@ -27,6 +28,12 @@
     <file url="file://$PROJECT_DIR$/redis3/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seata/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seata/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springAMQP/consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springAMQP/consumer2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springAMQP/publisher/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springAMQP/publisher2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springAMQP/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springAMQP/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springCloud/auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springCloud/auth/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springCloud/common-entity/src/main/java" charset="UTF-8" />

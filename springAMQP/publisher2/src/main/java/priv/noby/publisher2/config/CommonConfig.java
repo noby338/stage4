@@ -27,14 +27,14 @@ public class CommonConfig implements ApplicationContextAware {
         rabbitTemplate.setReturnCallback(new RabbitTemplate.ReturnCallback() {
             @Override
             public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
-                // 判断是否是延迟消息
+                // 判断是否是延迟消息，使用延迟插件实现的延迟功能需要书写该判断逻辑
                 Integer receivedDelay = message.getMessageProperties().getReceivedDelay();
                 if (receivedDelay != null && receivedDelay > 0) {
                     // 是一个延迟消息，忽略这个错误提示
                     return;
                 }
                 // 记录日志
-                log.error("消息发送到队列失败，响应码：{}, 失败原因：{}, 交换机: {}, 路由key：{}, 消息: {}",
+                log.error("消息发送到交换机成功，但发送到队列失败，响应码：{}, 失败原因：{}, 交换机: {}, 路由key：{}, 消息: {}",
                         replyCode, replyText, exchange, routingKey, message.toString());
                 // 如果有需要的话，重发消息
             }

@@ -48,6 +48,7 @@ public class SpringAmqpTest {
                 }
             }
 
+            // 发送过程中出现异常，没有收到回执
             @Override
             public void onFailure(Throwable ex) {
                 // 记录日志
@@ -56,16 +57,17 @@ public class SpringAmqpTest {
             }
         });
         // 3.发送消息
-        //模拟成功，amq.topic是rabbitmq自带的交换机，在web管控台手动绑定simple队列，路由到simple
-//        rabbitTemplate.convertAndSend("amq.topic", "simple", message, correlationData);
+        //模拟成功，消息投递到交换机和队列，amq.topic是rabbitmq自带的交换机，在web管控台手动绑定simple队列，路由到simple
+        rabbitTemplate.convertAndSend("amq.topic", "simple", message, correlationData);
         //模拟未投递到交换机
 //        rabbitTemplate.convertAndSend("111amq.topic", "simple", message, correlationData);
-//        //模拟交换机未投递到队列
-        rabbitTemplate.convertAndSend("amq.topic", "111simple", message, correlationData);
+        //模拟消息投递到交换机，但未投递到队列
+//        rabbitTemplate.convertAndSend("amq.topic", "111simple", message, correlationData);
     }
 
     /**
      * 消息的持久化
+     * SpringAMQP默认情况下消息，交换机和队列都是持久化的，其实不需要额外的设置
      */
     @Test
     public void testDurableMessage() {
@@ -78,7 +80,7 @@ public class SpringAmqpTest {
     }
 
     /**
-     * 死信交换机（收集死信的交换机，配合队列实现）
+     * 死信交换机实现消息延迟（收集死信的交换机，配合队列实现）
      * 一个队列中的消息变为死信分为三种：时间过期、被消费者返回nack并且没有设置重新入队、队列已满
      *
      * 该代码演示队列中的消息过期到达死信交换机

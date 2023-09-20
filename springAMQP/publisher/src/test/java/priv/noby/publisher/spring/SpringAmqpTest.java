@@ -62,8 +62,8 @@ public class SpringAmqpTest {
         // 消息
         String message = "hello, red!";
         // 发送消息
-//        rabbitTemplate.convertAndSend(exchangeName, "red", message);
-        rabbitTemplate.convertAndSend(exchangeName, "yellow", message);
+        rabbitTemplate.convertAndSend(exchangeName, "red", message);
+//        rabbitTemplate.convertAndSend(exchangeName, "yellow", message);
 //        rabbitTemplate.convertAndSend(exchangeName, "blue", message);
     }
 
@@ -77,9 +77,9 @@ public class SpringAmqpTest {
         // 消息
         String message = "今天天气不错，我的心情好极了!";
         // 发送消息
-//        rabbitTemplate.convertAndSend(exchangeName, "china.weather", message);
+        rabbitTemplate.convertAndSend(exchangeName, "china.weather", message);
 //        rabbitTemplate.convertAndSend(exchangeName, "china.news", message);
-        rabbitTemplate.convertAndSend(exchangeName, "japan.news", message);
+//        rabbitTemplate.convertAndSend(exchangeName, "japan.news", message);
     }
 
     /**

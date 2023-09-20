@@ -14,7 +14,7 @@
     - 队列持久化
         - SpringAMQP 默认是持久化的，RabbitMQ 默认不是持久化的
     - 消息持久化
-        - SpringAMQP 和 RabbitMQ 默认都是持久化的
+        - SpringAMQP 默认是持久化的，RabbitMQ 默认不是持久化的
 - consumer 接收到消息后未消费就宕机：解决方式为失败重试机制
     - none 消费者获得消息后，mq则删除队列中的消息
     - auto 模式类似事务机制，出现异常时返回 nack，消息回滚到队列；没有异常，返回 ack，消息删除

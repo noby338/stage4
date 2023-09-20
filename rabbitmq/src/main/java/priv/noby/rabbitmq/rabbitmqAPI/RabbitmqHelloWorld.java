@@ -29,7 +29,7 @@ public class RabbitmqHelloWorld {
     private static void produce(int times,long delay) throws IOException, TimeoutException {
         //创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("192.168.122.128");
+        connectionFactory.setHost("localhost");
         connectionFactory.setPort(5672);
         connectionFactory.setUsername("guest");
         connectionFactory.setPassword("guest");
@@ -77,7 +77,7 @@ public class RabbitmqHelloWorld {
      */
     private static void consumer(long delay) throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("192.168.122.128");
+        connectionFactory.setHost("localhost");
         connectionFactory.setPort(5672);
         connectionFactory.setUsername("guest");
         connectionFactory.setPassword("guest");
